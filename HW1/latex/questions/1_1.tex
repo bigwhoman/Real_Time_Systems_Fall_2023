@@ -1,0 +1,112 @@
+% \smalltitle{سوال 1.1}
+% \begin{enumerate}
+%     \item \phantom{text}
+%     \\
+%     \begin{latin}
+%         \noindent
+%         $S \rightarrow aSd|X|Y|Z$\\
+%         $X \rightarrow aXc|Y$\\
+%         $Y \rightarrow bYc|\epsilon$\\
+%         $Z \rightarrow bZd|Y$
+%     \end{latin}
+%     \item \phantom{text}
+%     \\
+%     \begin{latin}
+%         $S \rightarrow ab | Xb$\\
+%         $X \rightarrow a|Y$\\
+%         $Y \rightarrow aXb | bXa | aXa | bXb$
+%     \end{latin}
+% \end{enumerate}
+برای حل این سوال فرض می‌کنیم تسک‌های ما همگی زمان‌بندپذیر
+\footnote{feasable}
+طبق الگوریتم 
+EDF
+هستند و فرض کنید یک زمانبدی غیر 
+EDF
+داریم و بدون کم شدن از کلیات مسئله فرض می‌کنیم زمانبند ما نیز برای تسک‌های تعریف‌شده 
+feasable
+است.
+\\
+حال فرض کنید طبق زمانبد ما تعدادی تسک به صورت زیر زمانبندی شده‌اند به این صورت که می‌دانیم قطعا این زمانبند feasable 
+است اما ددلاین $T_1$
+دورتر از ددلاین $T_2$ است.
+\\
+\begin{latin}
+  Feasable non-EDF scheduling : 
+\tikzset{
+  gray box/.style={
+    fill=gray!20,
+    draw=gray,
+    minimum width={2*#1ex},
+    minimum height={2em},
+  },
+  annotation/.style={
+    anchor=north,
+  }
+}
+\begin{tikzpicture}[node distance=-0.5pt]
+  \node [gray box=7] (p1) {\(T_{1}\)};
+  \node [gray box=3, right=of p1] (p2) {\(\hdots\)};
+  \node [gray box=6, right=of p2] (p3) {\(T_{2}\)};
+  % \node [gray box=3, right=of p3] (p4) {\(P_{4}\)};
+
+  \node [annotation] at (p1.south west) {$r_1$};
+  \node [annotation] at (p1.south east) {$r_1 + c_1$};
+  \node [annotation] at (p2.south east) {$r_2$};
+  \node [annotation] at (p3.south east) {$r_2 + c_2$};
+  % \node [annotation] at (p4.south east) {30};
+\end{tikzpicture}
+\\
+\end{latin}
+حال فرض می‌کنیم جای دو تسک $T_1$ و $T_2$ عوض شود.
+\begin{latin}
+  EDF scheduling : 
+\tikzset{
+  gray box/.style={
+    fill=gray!20,
+    draw=gray,
+    minimum width={2*#1ex},
+    minimum height={2em},
+  },
+  annotation/.style={
+    anchor=north,
+  }
+}
+\begin{tikzpicture}[node distance=-0.5pt]
+  \node [gray box=6] (p1) {\(T_{2}\)};
+  \node [gray box=3, right=of p1] (p2) {\(\hdots\)};
+  \node [gray box=7, right=of p2] (p3) {\(T_{1}\)};
+  % \node [gray box=3, right=of p3] (p4) {\(P_{4}\)};
+
+  \node [annotation] at (p1.south west) {$r_1$};
+  \node [annotation] at (p1.south east) {$r_1 + c_2$};
+  \node [annotation] at (p2.south east) {$r'_1$};
+  \node [annotation] at (p3.south east) {$r'_1 + c_1$};
+  % \node [annotation] at (p4.south east) {30};
+\end{tikzpicture}
+\\
+\end{latin}
+حال می‌دانیم چون زمانبند اول ما feasable است و $\leftarrow D_{T_2} < D_{T_1} $ 
+\begin{latin}
+  \noindent
+  $
+    r_1 + c_1 \leq D_{T_1} \\ r_2 + c_2 \leq D_{T_2} < D_{T_1}\\ 
+    r_1 + c_1 < r_2 \\
+    r_1 + c_2 < r'_1
+  $
+\end{latin}
+همچنین چون فقط جای ۲ تسک را عوض کرده‌ایم، پس زمان کلی ما ثابت مانده است $\leftarrow$
+\begin{latin}
+  \noindent
+  $
+  r_2 + c_2 = r'_1 + c_1  \\ 
+  r'_1 + c_1 = r_2 + c_2 \leq D_{T_2} < D_{T_1} \Rightarrow r'_1 + c_1 < D_{T_1} \Rightarrow \text{Stays feasable for } T_1 \checkmark \\
+  r_1 + c_2 < (r'_1+c_1=r_2+c_2) \leq D_{T_2} \Rightarrow r_1 + c_2 < D_{T_2} \Rightarrow \text{Stays feasable for } T_2 \checkmark \\
+  $
+\end{latin}
+
+حال اثبات کردیم که با تعویض این دو تسک باز هم زمانبند ما feasable 
+باقی می‌ماند پس EDF از نظر 
+feasability 
+حالت optimal برای ما است.
+% با معادلات بالا نیز می‌توان اثبات کرد 

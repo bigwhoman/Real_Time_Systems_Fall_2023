@@ -1,0 +1,41 @@
+\smalltitle{سوال 1.2}
+\\
+برای حل این سوال باید ببینیم هر کدام از عبارات را می‌توان به چه صورت توصیف کرد.
+\begin{enumerate}
+    \item \phantom{text}
+          \\
+        \begin{latin}
+            $S = S\#S | A \rightarrow S = S\#S\#S | A \rightarrow \cdots \rightarrow S = S\#S\#S\cdots\#S | A 
+            \\
+            S = A\#A\#A\cdots\#A | A \rightarrow S = A(\#A)^* : I
+            \\
+            A = 10 | 0A \rightarrow A = 10 | 00A \rightarrow \cdots \rightarrow A = 10 | 00\cdots0A 
+            \\
+            A = 0^*10
+            \\
+            L = \{0^a10(\#0^b10)^c|0 \leq a,b,c\}
+            $ 
+        \end{latin}
+    \item \phantom{text}
+    \\
+    ادعا می‌کنیم که این زبان عملا همان $(a U b)(a^*b^*)^*$ است و آنرا با استقرا ثابت می‌کنیم.
+    می‌دانیم که برای گام اول استقرا a یا b توسط گرامر ما شناخته می‌شوند چرا که :
+    \begin{latin}
+        $S\rightarrow aY|bY \xrightarrow[]{Y \rightarrow \epsilon} S \rightarrow a | b$
+        \\
+        
+    \end{latin}
+    حال فرض کنید یک رشته به طول n متشکل از a یا b داریم که ابتدای آن a یا b است و زبان ما می‌تواند آنرا تشخیص دهد. اثبات می‌کنیم اگر یک کاراکتر نیز به این رشته اضافه شود باز هم زبان ما می‌تواند آنرا تشخیص دهد. بدون کاستن از کلیت مسئله فرض می‌کنیم که رشته ما به صورت aT است که طول کل رشته n است.
+    حال می‌دانیم در آخر رشته می‌تواند ۲ کاراکتر a یا b بیاید. فرض می‌کنیم این کاراکتر دلخواه x است.
+
+    \begin{latin}
+        String = aTx $\rightarrow aT \in L \Rightarrow S \rightarrow aY,S\rightarrow aT \Rightarrow $ String = aYx 
+
+    \end{latin}
+    حال چه x برابر a باشد چه b طبق گرامر تعریف شده باز می‌تواند توسط Y ساخته شود که یعنی حکم استقرا اثبات شد.
+    \\
+    \begin{latin}
+        $L = \{(a U b)(a^x b^y)^z |0 \leq x,y,z\}$
+    \end{latin}
+
+\end{enumerate}

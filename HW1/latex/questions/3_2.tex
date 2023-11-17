@@ -1,0 +1,120 @@
+\smalltitle{سوال 3.2}
+\\
+\begin{enumerate}
+    \item \phantom{text}
+          \\
+          \begin{latin}
+            
+
+          \noindent
+          \begin{tikzpicture}[shorten >=1pt, node distance=2.7cm, on grid, auto]
+              \node[state, initial] (q0') {$ $};
+              \node[state] (q0) [right=of q0'] {$A$};
+
+              \node[state,accepting] (q6) [right=of q0] {$fin$};
+              \node[state] (q1) [above=of q6] {$B1$};
+              \node[state] (q2) [below=of q6] {$B2_{0}$};
+              \node[state] (q3) [right=of q2] {$B2_{1}$};
+              \node[state] (q4) [right=of q3] {$B2_{2}$};
+              \path[->]
+
+              (q0') edge [] node {$\epsilon,\epsilon\rightarrow\$$} (q0)
+              (q0) edge [loop above] node {a,$\epsilon\rightarrow a$} (q0)
+              (q0) edge [] node [pos=0.7]{$\epsilon,\epsilon\rightarrow\epsilon$} (q1)
+              (q0) edge [] node[below,left] {$\epsilon,\epsilon\rightarrow\epsilon$} (q2)
+              (q1) edge [] node [] {$\epsilon,\$\rightarrow\epsilon$} (q6)
+              (q2) edge [] node [right] {$\epsilon,\$\rightarrow\epsilon$} (q6)
+              (q2) edge [] node [] {b,$a\rightarrow\epsilon$} (q3)
+              (q3) edge [] node [] {$\epsilon$,$a\rightarrow\epsilon$} (q4)
+              (q4) edge [bend left] node [] {$\epsilon$,$a\rightarrow\epsilon$} (q2)
+              % (q2) edge [loop below] node [] {} (q2)
+              (q1) edge [loop above] node [] {b,$a\rightarrow\epsilon$} (q1)
+
+              % (q0') edge [bend right] node {$\epsilon$} (q2)
+              % (q0) edge [] node {$$} (q1)
+              % (q1) edge [bend left] node {$\epsilon$} (q0)
+              % (q1) edge [] node {$\epsilon$} (q2)
+              ;
+          \end{tikzpicture}
+        \end{latin}
+    \item \phantom{text}
+          \\
+          می‌دانیم شرط مسئله معادل این است که k از i یا j بیشتر باشد.
+          \\
+          \begin{latin}
+            
+          
+          \noindent
+          \begin{tikzpicture}[shorten >=1pt, node distance=2.7cm, on grid, auto]
+              \node[state, initial] (q0') {$ $};
+              \node[state] (q0) [right=of q0'] {$A$};
+
+              \node[state,accepting] (q6) [right=of q0] {$fin$};
+              \node[state] (q1) [above=of q6] {$B1$};
+              \node[state] (q2) [below=of q6] {$B2_{0}$};
+              \node[state] (q3) [right=of q2] {$B2_{1}$};
+              \node[state] (q4) [above=of q3] {$B2_{2}$};
+              \path[->]
+
+              (q0') edge [] node {$\epsilon,\epsilon\rightarrow\$$} (q0)
+              (q0) edge [loop above] node {a,$\epsilon\rightarrow a$} (q0)
+              (q0) edge [] node [pos=0.7]{$\epsilon,\epsilon\rightarrow\epsilon$} (q1)
+              (q0) edge [] node[below,left] {$\epsilon,\epsilon\rightarrow\epsilon$} (q2)
+              (q1) edge [] node [] {$\epsilon,\$\rightarrow\epsilon$} (q6)
+              %    (q2) edge [] node [right] {$\epsilon,\$\rightarrow\epsilon$} (q6)
+              (q2) edge [] node [] {$\epsilon$,$\epsilon\rightarrow\epsilon$} (q3)
+              (q3) edge [] node [] {$\epsilon$,$\epsilon\rightarrow\epsilon$} (q4)
+              %    (q4) edge [bend left] node [] {b,$a\rightarrow\epsilon$} (q2)
+              (q2) edge [loop below] node [] {$\epsilon,a\rightarrow\epsilon$} (q2)
+              (q1) edge [loop above] node [] {c,$a\rightarrow\epsilon$} (q1)
+              (q3) edge [loop below] node [] {b,$\epsilon \rightarrow b$} (q3)
+              (q4) edge [] node [] {$\epsilon$,$\$\rightarrow\epsilon$} (q6)
+              (q4) edge [loop above] node [] {c,$b\rightarrow\epsilon$} (q4)
+              % (q0') edge [bend right] node {$\epsilon$} (q2)
+              % (q0) edge [] node {$$} (q1)
+              % (q1) edge [bend left] node {$\epsilon$} (q0)
+              % (q1) edge [] node {$\epsilon$} (q2)
+              ;
+          \end{tikzpicture}
+        \end{latin}
+    \item \phantom{text}
+          \\
+          ابتدا برای این که به صورت 2m+1 تعداد ۰ ها را داشته باشیم، اولین ۰ استک را ایگنور می‌کنیم و سپس به ازای هر ۱، دو بار ۰ بالای استک را پاپ می‌کنیم.
+          \\
+          \begin{latin}
+            
+
+          \noindent
+          \begin{tikzpicture}[shorten >=1pt, node distance=2.7cm, on grid, auto]
+              % \node[state, initial] (q0') {$ $};
+              \node[state, initial] (q0) [] {$A$};
+                \node[state] (q1) [right=of q0] {a};
+                \node[state] (q2) [right=of q1] {b};
+
+                \node[state] (q7) [below=of q2] {};
+                \node[state] (q3) [below=of q7] {c};
+                \node[state] (q4) [below=of q3] {d};
+                \node[state] (q5) [left=of q3] {e};
+                
+              \path[->]
+
+                % (q0') edge [] node {$\epsilon,\epsilon\rightarrow\$$} (q0)
+                (q0) edge [] node {$\epsilon,\epsilon\rightarrow\$$} (q1)
+                (q1) edge [] node {0,$\epsilon\rightarrow\epsilon$} (q2)
+                (q2) edge [loop above] node {0,$\epsilon\rightarrow0$} (q2)
+                (q2) edge [] node {1,$0\rightarrow\epsilon$} (q7)
+                (q7) edge [] node {$\epsilon,0\rightarrow\epsilon$} (q3)
+                (q3) edge [left] node {1,$0\rightarrow\epsilon$} (q4)
+                (q4) edge [bend right,right] node {$\epsilon$,$0\rightarrow\epsilon$} (q3) 
+                (q3) edge [above] node {$\epsilon,0\rightarrow\epsilon$} (q5)
+                (q3) edge [bend right,above] node  {$1,\$\rightarrow\epsilon$} (q5)
+                (q7) edge [above left] node {$\epsilon,\$ \rightarrow \epsilon$} (q5)
+                (q4) edge [] node {$\epsilon,\$\rightarrow\epsilon$} (q5)
+                (q2) edge [bend right,above left] node {$1,\$\rightarrow\epsilon$} (q5)
+                % (q3) edge [] node {1,$\$\rightarrow\epsilon$} (q5)
+                % (q5) edge [] node {$\epsilon,\$\rightarrow\epsilon$} (q6)
+                % (q4) edge [] node {$\epsilon,\$\rightarrow\epsilon$} (q5)
+              ;
+          \end{tikzpicture}
+        \end{latin}
+\end{enumerate}

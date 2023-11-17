@@ -1,0 +1,37 @@
+\smalltitle{سوال 2.2}
+\begin{enumerate}
+    \item \phantom{text}
+          \\
+          برای حل این سوال می‌توان از این ویژگی استفاده کرد که زبان‌های مستقل از متن تحت عملیات  union بسته هستند پس می‌توان ۳ شرط را جداگانه ساخته ساخت و در نهایت ۳ ماشین را به یکدیگر متصل کرد.
+          \begin{latin}
+              m = k + n :
+              \\
+              $S \rightarrow aSc|X$\\
+              $X \rightarrow aXb | \epsilon$
+              \\\\
+              k = m + n :
+              \\
+              $S\rightarrow aXbYc$\\
+              $X \rightarrow aXb | \epsilon$\\
+              $Y \rightarrow bYc | \epsilon$
+              \\\\
+              n = k+m
+              \\
+              $S \rightarrow aSc | X$\\
+              $X \rightarrow bXc | \epsilon$
+          \end{latin}
+          حال توانستیم زبان را به سه زبان مچزا تقسیم کنیم و می‌دانیم که طبق عملیات union بسته‌اند پس نهایتا این سه را با یکدیگر union می‌کنیم و زبان خواسته شده را بدست می‌آوریم.
+    \item \phantom{text}
+          \\
+        این سوال مانند این است که عبارت $(a^mb^kc^n)^*$ را داشته باشیم و بخواهیم اثبات کنیم که یک زبان مستقل از متن است.\\
+        حال طبق قسمت قبلی می‌دانیم زبان‌های مستقل از متن تحت عملیات star بسته هستند پس کافی است اثبات کنیم $a^mb^kc^n$ مستقل از متن است.\\
+        \begin{latin}
+            k = 3m + 4n:
+            \\
+            $S \rightarrow XY$\\
+            $X \rightarrow aXbbb | \epsilon$\\
+            $Y \rightarrow bbbbYc | \epsilon$
+        \end{latin}
+        حال توانستیم گرامر زبان را بسازیم و طبق بسته بودن عملیات ستاره می‌توانیم به خواسته صورت سوال برسیم.
+           
+\end{enumerate}
