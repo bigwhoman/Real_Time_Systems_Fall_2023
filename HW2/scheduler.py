@@ -1,5 +1,6 @@
 from pprint import pprint
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 example_tree = {
     'A': {
@@ -231,7 +232,7 @@ def schedule_EDF(table: dict):
     done_list = []
     time = 0
     time_epoch = 1
-    max_schedule_time = 25
+    max_schedule_time = max(list(map(lambda x:table[x]["Deadline"],table)))
     for task in table.keys():
         table[task]["Schedule"] = []
         table[task]["Computed"] = 0
@@ -263,14 +264,40 @@ def schedule_EDF(table: dict):
 
         time += computing_time
 
-    pprint(table)
+    return table
 
+def draw_chart(tasks):
+    colors = np.random.rand(len(tasks), 3)
+    all_schedules = [task['Schedule'] for task in tasks.values()]
+
+    max_end = max([max(sched[-1][-1] for sched in all_schedules)])
+
+
+    fig, ax = plt.subplots(1, figsize=(8,4))
+    for i, task in enumerate(tasks):
+        
+        schedules = tasks[task]['Schedule']
+        for start, end in schedules:
+            ax.broken_barh([(start, end-start)], (i-0.4,0.8), facecolors=colors[i])
+            
+        ax.text(-0.1, i, task, ha='right', va='center')
+
+    ax.set_xlim(0, max_end)
+    ax.set_xticks(np.arange(0, max_end + 1, 1))
+    ax.set_xlabel('Time')
+    ax.set_ylabel('Tasks')
+    ax.set_yticklabels([])
+    ax.set_title('Gantt Chart')
+
+    plt.show()
+
+    
 
 def schedule_tree(tree: dict):
     turn_to_EDF(tree=tree)
-    schedule_EDF(table=tree)
-
+    table = schedule_EDF(table=tree)
+    draw_chart(table)
 
 if __name__ == "__main__":
-    tree = example_tree2
+    tree = example_tree
     schedule_tree(tree)
