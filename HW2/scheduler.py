@@ -227,7 +227,6 @@ def turn_to_EDF(tree: dict) -> dict:
     modify_deadlines(tree)
 
 
-# TODO: When tree turned to EDF, schedule the EDF
 def schedule_EDF(table: dict):
     done_list = []
     time = 0
