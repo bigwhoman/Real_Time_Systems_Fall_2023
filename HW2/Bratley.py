@@ -82,18 +82,19 @@ def get_deep(root: str, table: dict, total_time: int, chain: list) -> bool:
     time = max(total_time+table[root]["Computation_time"],
                table[root]["Release_time"]+table[root]["Computation_time"])
     if time > table[root]["Deadline"]:
-        # print(chain, time, table[root]["Deadline"])
+        print(chain, time, total_time, table[root]["Deadline"])
         return False
     for child in table:
         if not table[child]["Visited"]:
             if time + table[child]["Computation_time"] > table[child]["Deadline"]:
+                
                 read_fail = chain.copy()
-                read_fail.append(child)
+                read_fail.append(child+"--"+str(time))
                 failed.append(read_fail)
                 return False
     for child in table:
         if not table[child]["Visited"]:
-            chain.append(child)
+            chain.append(child+"--"+str(time))
             if get_deep(root=child, table=table, total_time=time, chain=chain):
                 table[root]["Child"] = child
                 table[root]["Schedule"] = []
