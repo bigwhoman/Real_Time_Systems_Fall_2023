@@ -1,0 +1,34 @@
+\smalltitle{سوال 3.1}
+\\
+\begin{enumerate}
+    \item \phantom{text}
+          \\
+          این زبان نمی‌تواند رشته‌هایی که با معکوس خود برابر هستند به طول زوج را تشخیص دهد مثلا فرض کنید
+          رشته 00 را داشته باشیم، در این صورت رشته مورد نظر
+          تشخیص داده نمی‌شود اما بدیهی است که این رشته با معکوس خود
+          یکی است.
+    \item \phantom{text}
+          \\
+          یک ترنزیشن از $q_1$ به $q_2$ اضافه می‌کنیم به صورتی که
+          این ترنیشن هزینه‌ای ندارد و اپسیلون ترنزیشن است و همچنین 
+          هیچ چیز به استک پوش نمی‌شود و چیزی هم از استک پاپ
+          نمی‌شود.
+          باقی ترنزیشن‌ها را دست نمی‌زنیم و شکل زیر صرفا نمایش چیزی است که باید اضافه شود ( فرض کنید باقی ترنزیشن‌ها نیز مانند قبل هستند)
+          \begin{latin}
+            $q_1 \xrightarrow[]{\epsilon,\epsilon\rightarrow\epsilon}q_2$
+        \end{latin}
+        \begin{latin}
+            
+
+            \noindent
+            \begin{tikzpicture}[shorten >=1pt, node distance=2.7cm, on grid, auto]
+                  \node[state] (q1) [] {$q_1$};
+                  \node[state] (q2) [right=of q1] {$q_2$};
+                  
+                \path[->]
+                  (q1) edge [] node {$\epsilon,\epsilon\rightarrow\epsilon$} (q2)
+
+                ;
+            \end{tikzpicture}
+          \end{latin}
+\end{enumerate}

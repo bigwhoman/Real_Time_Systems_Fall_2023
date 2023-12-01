@@ -1,4 +1,3 @@
-from pprint import pprint
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -128,56 +127,93 @@ example_tree2 = {
 }
 
 example_tree3 = {
-    'A': {
+    't1': {
         "Fathers": [],
-        "Children": ["C"],
-        "Release_time": 0,
+        "Children": ["t3","t4","t5"],
+        "Release_time": 2,
         "Computation_time": 2,
-        "Deadline": 25,
+        "Deadline": 20,
     },
-    'B': {
+    't2': {
         "Fathers": [],
-        "Children": ["C", "D"],
-        "Release_time": 0,
+        "Children": ["t5", "t6"],
+        "Release_time": 3,
         "Computation_time": 3,
-        "Deadline": 25,
+        "Deadline": 20,
     },
-    'C': {
-        "Fathers": ["A", "B"],
-        "Children": ["E", "F"],
-        "Release_time": 0,
-        "Computation_time": 3,
-        "Deadline": 25,
+    't3': {
+        "Fathers": ["t1"],
+        "Children": ["t7"],
+        "Release_time": 8,
+        "Computation_time": 4,
+        "Deadline": 30,
     },
-    'D': {
-        "Fathers": ["B"],
-        "Children": ["F", "G"],
-        "Release_time": 0,
+    't4': {
+        "Fathers": ["t1"],
+        "Children": ["t7","t8"],
+        "Release_time": 4,
+        "Computation_time": 4,
+        "Deadline": 30,
+    },
+    't5': {
+        "Fathers": ["t1","t2"],
+        "Children": ["t8","t9"],
+        "Release_time": 5,
         "Computation_time": 5,
-        "Deadline": 25,
+        "Deadline": 30,
     },
-    'E': {
-        "Fathers": ["C"],
-        "Children": [],
-        "Release_time": 0,
+    't6': {
+        "Fathers": ["t2"],
+        "Children": ["t9"],
+        "Release_time": 7,
+        "Computation_time": 2,
+        "Deadline": 30,
+    },
+    't7': {
+        "Fathers": ["t3","t4"],
+        "Children": ["t10"],
+        "Release_time": 6,
+        "Computation_time": 3,
+        "Deadline": 40,
+    },
+    't8': {
+        "Fathers": ["t4","t5"],
+        "Children": ["t10"],
+        "Release_time": 8,
         "Computation_time": 1,
-        "Deadline": 25,
+        "Deadline": 40,
     },
-    'F': {
-        "Fathers": ["C", "D"],
-        "Children": [],
-        "Release_time": 0,
-        "Computation_time": 2,
-        "Deadline": 25,
+    't9': {
+        "Fathers": ["t5","t6"],
+        "Children": ["t11","t12"],
+        "Release_time": 10,
+        "Computation_time": 4,
+        "Deadline": 40,
     },
-    'G': {
-        "Fathers": ["D"],
+    't10': {
+        "Fathers": ["t7","t8"],
         "Children": [],
-        "Release_time": 0,
-        "Computation_time": 5,
-        "Deadline": 25,
+        "Release_time": 7,
+        "Computation_time": 3,
+        "Deadline": 50,
+    },
+    't11': {
+        "Fathers": ["t9"],
+        "Children": [],
+        "Release_time": 11,
+        "Computation_time": 3,
+        "Deadline": 50,
+    },
+    't12': {
+        "Fathers": ["t9"],
+        "Children": [],
+        "Release_time": 9,
+        "Computation_time": 4,
+        "Deadline": 50,
     }
 }
+
+
 
 
 def modify_deadlines(tree: dict):
@@ -245,6 +281,9 @@ def schedule_EDF(table: dict):
                time < table[task]["Release_time"]:
                 continue
             else:
+                if table[task]["Deadline"] < time :
+                    print("Tasks Not Schedulable !!!!")
+                    exit(1)
                 if table[task]["Deadline"] < min_deadline:
                     to_be_done = task
                     min_deadline = table[task]["Deadline"]
@@ -298,5 +337,5 @@ def schedule_tree(tree: dict):
     draw_chart(table)
 
 if __name__ == "__main__":
-    tree = example_tree
+    tree = example_tree3
     schedule_tree(tree)
