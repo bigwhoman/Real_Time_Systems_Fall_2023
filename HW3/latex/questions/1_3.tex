@@ -1,0 +1,140 @@
+\smalltitle{سوال 1.3}
+\begin{enumerate}
+    \item \phantom{text}
+    \\
+    برای رشته $bbbbbbbb$ دو درخت parse متفاوت رسم می‌کنیم.
+    \begin{latin}
+        \begin{forest}
+            [S
+              [
+                A 
+                 [
+                    b
+                 ]
+                 [
+                    B
+                     [
+                        b
+                     ]
+                 ]
+              ]
+              [
+                S
+                  [
+                    A
+                    [
+                        b
+                     ]
+                     [
+                        B
+                         [
+                            b
+                         ]
+                     ]
+                  ]
+                  [
+                    S
+                     [
+                        B
+                         [
+                            b
+                         ]
+                     ]
+                     [
+                        B
+                        [
+                            b
+                        ]
+                     ]
+                  ]
+                  [
+                    B
+                    [
+                        b
+                    ]
+                  ]
+              ]
+              [
+                B
+                [
+                    b
+                ]
+              ]
+            ]
+          \end{forest}  
+          \begin{forest}
+            [S
+                [
+                    B
+                      [
+                        A
+                         [
+                            b
+                         ]
+                         [
+                            B
+                            [
+                                A
+                                [
+                                    b
+                                ]
+                                [
+                                    B
+                                    [
+                                        b
+                                    ]
+                                ]
+                            ]
+                            [
+                                b
+                            ]
+                         ]
+                      ]
+                      [
+                        b
+                      ]
+                ]
+                [
+                    B 
+                    [
+                        A
+                        [
+                            b
+                        ]
+                        [
+                            B
+                            [
+                                b
+                            ]
+                        ]
+                    ]
+                    [
+                        b
+                    ]
+                ]
+            ]
+          \end{forest} 
+    \end{latin}
+    \item \phantom{text}
+    \\
+    \begin{latin}
+        $S \rightarrow AX $\\
+        $S \rightarrow BB $\\
+        $S' \rightarrow AX$\\
+        $S' \rightarrow BB$\\
+        $X \rightarrow S'B$\\
+        $A \rightarrow S'A'$\\
+        $A \rightarrow a$\\
+        $A \rightarrow TB$\\
+        $A' \rightarrow AJ$\\
+        $J \rightarrow a$\\
+        $T \rightarrow b$\\
+        $B \rightarrow AT$\\
+        $B \rightarrow SJ$ \\
+        $B \rightarrow b$
+    \end{latin}
+    \item \phantom{text}
+    \\
+    بله چرا که صرفا توالی عوض شده اما باز هم می‌توان با در نظر گرفتن دو انعشاب AX , BB از S' به جواب نهایی bbbbbbbb رسید چرا
+    که این فرم را دقیقا مانند فرم قبلی که دو درخت را با شروع از BB و ASB تولید کردیم می‌توان تولید کرد صرفا با این تفاوت که در این جا BB , AX تولید می‌شوند که در مرحله بعدی X به S'B تبدیل شده که عملا انگار همان ASB را با یک مرحله تبدیل اضافه‌تر انجام داده‌ایم و باقی تبدیل‌ها نیز به همین منوال هستند.
+\end{enumerate}
